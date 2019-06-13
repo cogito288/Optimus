@@ -2,10 +2,22 @@
 
 ## SETUP
 ### DATA DIRECTORY
-(1) 
+(1) Download 
+
+https://github.com/apache/incubator-mxnet/blob/master/example/image-classification/train_cifar10.py
+def download_cifar10():
+    data_dir="data"
+    fnames = (os.path.join(data_dir, "cifar10_train.rec"),
+              os.path.join(data_dir, "cifar10_val.rec"))
+    download_file('http://data.mxnet.io/data/cifar10/cifar10_val.rec', fnames[1])
+    download_file('http://data.mxnet.io/data/cifar10/cifar10_train.rec', fnames[0])
+    return fnames
+(train_fname, val_fname) = download_cifar10()
+
 - data/k8s-mxnet/cifar10/cifar10_train.rec
 - data/k8s-mxnet/cifar10/cifar10_val.rec
 
+(2) Copy template/* into data/k8s-mxnet/templates/.
 - data/k8s-mxnet/templates/check-jinja.py  
 - data/k8s-mxnet/templates/k8s-mxnet-template.jinja
 - data/k8s-mxnet/templates/render-template.py

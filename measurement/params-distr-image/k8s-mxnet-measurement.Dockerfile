@@ -1,6 +1,6 @@
 # build an measurement image
 
-FROM xxx/mxnet-cpu
+FROM yhpeng/mxnet-cpu
 
 MAINTAINER xxx
 

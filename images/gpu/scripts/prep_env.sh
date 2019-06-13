@@ -24,6 +24,7 @@ cd nmt
 
 #pip3 install sockeye
 
-wget https://raw.githubusercontent.com/awslabs/sockeye/master/requirements.gpu-cu80.txt
+#wget https://raw.githubusercontent.com/awslabs/sockeye/master/requirements.gpu-cu80.txt
+wget https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu80.txt
 pip3 install sockeye --no-deps -r requirements.gpu-cu80.txt
 rm requirements.gpu-cu80.txt

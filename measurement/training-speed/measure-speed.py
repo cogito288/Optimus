@@ -9,6 +9,9 @@ from job import Job
 import utils
 
 
+# ADD base directory, that is Optimus directory
+base_dir = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
+
 	
 job_name_list = ['alexnet', 'resnet-50', 'vgg-11', 'inception-bn', 'resnet-152', 'resnet-101']
 neural_network_list = ['alexnet', 'resnet', 'vgg', 'inception-bn', 'resnet', 'resnet']

@@ -1,0 +1,7 @@
+2019-06-13 23:08:38,781 INFO: clear all existing jobs
+2019-06-13 23:08:41,967 INFO: ------------------start job 1-------------------
+2019-06-13 23:08:41,968 INFO: time elapsed: 1.26481056213e-05 minutes
+2019-06-13 23:11:01,687 INFO: clear all existing jobs
+2019-06-13 23:11:01,722 INFO: ------------------start job 1-------------------
+2019-06-13 23:11:01,722 INFO: time elapsed: 2.93254852295e-06 minutes
+2019-06-13 23:11:06,064 INFO: detect Ctrl+C, exit...

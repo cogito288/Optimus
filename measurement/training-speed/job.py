@@ -51,6 +51,7 @@ class Job(object):
 		
 		self.kv_store_big_array_bound = str(1000*1000)
 		self.ps_verbose = ''
+		self.base_dir = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..')) 
 	
 	def set_ps_resources(self, num_ps, ps_cpu, ps_mem):
 		'''resource requirements of parameter servers'''
@@ -209,7 +210,7 @@ class Job(object):
 		
 		# copy template file
 		self.jinja = self.dir + self.name + '.jinja'
-		os.system("cp ~/k8s-mxnet/templates/k8s-mxnet-template.jinja " + self.jinja)
+		os.system("cp "+ base_dir +"/k8s-mxnet/templates/k8s-mxnet-template.jinja " + self.jinja)
 		
 		# replace variables in jinja file
 		temp_file = self.jinja + '.temp'
@@ -220,7 +221,7 @@ class Job(object):
 			
 		# generate yaml file
 		self.yaml = self.dir + self.name + '.yaml'
-		os.system("python ~/k8s-mxnet/templates/render-template.py " + self.jinja + " > " + self.yaml)
+		os.system("python "+ base_dir +"/k8s-mxnet/templates/render-template.py " + self.jinja + " > " + self.yaml)
 	
 	def _read_data(self):
 		'''read data from HDFS'''

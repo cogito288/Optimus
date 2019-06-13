@@ -17,7 +17,7 @@ job_name_list = ['alexnet', 'resnet-50', 'vgg-11', 'inception-bn', 'resnet-152',
 neural_network_list = ['alexnet', 'resnet', 'vgg', 'inception-bn', 'resnet', 'resnet']
 num_layers_list = ['', '50', '', '', '152', '101']
 
-node_list = ['10.28.1.1', '10.28.1.2', '10.28.1.3', '10.28.1.4', '10.28.1.6', '10.28.1.7', '10.28.1.8']
+node_list = ['10.20.17.52', '10.20.17.113'] #['10.28.1.1', '10.28.1.2', '10.28.1.3', '10.28.1.4', '10.28.1.6', '10.28.1.7', '10.28.1.8']
 ps_cpu = "5"
 ps_mem = "8Gi"
 worker_cpu = "5"
@@ -97,8 +97,8 @@ def measure_speed():
 	
 	for kv_store in kv_stores:
 		for batch_size in ['40']:
-			for num_ps in xrange(10, 22, 2):	# to save time, change to xrange(1, num_node, 2)
-				for num_worker in xrange(10, 20):	# to save time, change to xrange(1, num_node-num_ps+1, 2)
+			for num_ps in [1]: #xrange(10, 22, 2):	# to save time, change to xrange(1, num_node, 2)
+				for num_worker in [1]: #xrange(10, 20):	# to save time, change to xrange(1, num_node-num_ps+1, 2)
 					job_id += 1
 					
 					logger.info("------------------start job " + str(job_id) + "-------------------")
@@ -116,15 +116,15 @@ def measure_speed():
 					measure_job.set_ps_placement(placement_list[:num_ps])
 					measure_job.set_worker_placement(placement_list[num_ps:num_ps+num_worker])
 					
-					image = 'yhpeng/k8s-mxnet-measurement'
-					script = '/init.py'
+					image = 'cogito288/k8s-mxnet-gpu-experiment'
+					script = '/init.sh'
 					prog = '/mxnet/example/image-classification/train_imagenet.py'
 					work_dir = '/mxnet/example/image-classification/data/'
-					mount_dir_prefix = '/data/k8s-workdir/measurement/'
+					mount_dir_prefix = base_dir+'/data/k8s-workdir/measurement/'
 					measure_job.set_container(image, script, prog, work_dir, mount_dir_prefix)
 	
-					measure_job.set_data(data_train='imagenet_data_train_1.rec', data_val='',\
-					hdfs_data_train='/k8s-mxnet/imagenet/imagenet_data_train_1.rec', hdfs_data_val='')
+					measure_job.set_data(data_train='cifar10_train.rec', data_val='',\
+					hdfs_data_train=base_dir+'/k8s-mxnet/cifar10/cifar10_train.rec', hdfs_data_val='')
 					measure_job.set_network('vgg', '')
 					measure_job.set_training('100',batch_size,kv_store,gpus='')
 					measure_job.set_disp('1')

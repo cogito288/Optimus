@@ -1,6 +1,6 @@
 # build an experiment image
 
-FROM xxx/mxnet-gpu
+FROM yhpeng/mxnet-gpu
 
 MAINTAINER xxx
 

@@ -1,3 +1,18 @@
+# MODIFIED OPTIMUS
+
+## SETUP
+### DATA DIRECTORY
+(1) 
+- data/k8s-mxnet/cifar10/cifar10_train.rec
+- data/k8s-mxnet/cifar10/cifar10_val.rec
+
+- data/k8s-mxnet/templates/check-jinja.py  
+- data/k8s-mxnet/templates/k8s-mxnet-template.jinja
+- data/k8s-mxnet/templates/render-template.py
+
+
+
+
 # Optimus
 
 Optimus is a customized cluster scheduler for deep learning training jobs that targets high job performance and resource efficiency in production clusters. It builds resource-performance models for each job on the go, and dynamically schedules resources to jobs based on job progress and the cluster load to maximize training performance and resource efficiency. It uses MXNet as the distributed training framework and is integrated into Kubernetes cluster manager.
